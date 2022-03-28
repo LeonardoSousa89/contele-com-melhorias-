@@ -1,0 +1,50 @@
+swagger: '2.0'
+info:
+  version: 2.0.0
+  title: Listar todos usuarios
+  description: Listar todos usuarios
+paths: 
+   /api/v1/users:
+    get:
+      summary: Listar todos usuarios
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: '#/definitions/body_request'
+      responses:
+        200:
+          description: OK.
+          schema:
+            $ref: '#/definitions/body_response'
+        401:
+          description: Você precisa estar logado para esta ação.
+        500:
+          description: Ocorreu um erro no servidor.
+definitions:
+  body_request:
+    type: object
+    required:
+      - token
+      - id
+  body_response:
+    type: object
+    required:
+      - id
+      - nome
+      - email
+      - senha
+    properties:
+      id:
+        type: string
+        example: 3
+        format: string
+      nome:
+        type: string
+        example: Nelio Alves
+        format: string
+      email:
+        type: string
+        example: Neliojava@aws.com.br
+        format: string

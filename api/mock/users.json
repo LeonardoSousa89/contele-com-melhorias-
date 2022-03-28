@@ -1,0 +1,17 @@
+[
+    {
+        "nome": "Nélio Alves",
+        "email": "NelioJava@outlook.com.br",
+        "senha":"1234"
+    },
+    {
+        "nome": "Filipe Dechamps",
+        "email": "DechampsDev@outlook.com.br",
+        "senha":"1234"
+    },
+    {
+        "nome": "Leonardo Sousa",
+        "email": "mendesDev@aws.com.br",
+        "senha":"1234"
+    }
+]

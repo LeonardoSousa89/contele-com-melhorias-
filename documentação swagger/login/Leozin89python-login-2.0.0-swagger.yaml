@@ -1,0 +1,57 @@
+swagger: '2.0'
+info:
+  version: 2.0.0
+  title: login
+  description: login
+paths: 
+   /api/v1/users/login:
+    post:
+      summary: login
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: '#/definitions/body_request'
+      responses:
+        200:
+          description: OK.
+          schema:
+            $ref: '#/definitions/body_response'
+        400:
+          description: Mensagem de erro.
+        401:
+          description: Email/Senha inválidos.
+        404:
+          description: Usuário não encontrado.
+        500:
+          description: Ocorreu um erro no servidor.
+definitions:
+  body_request:
+    type: object
+    required:
+      - email
+      - senha
+    properties:
+      email:
+        type: string
+        example: Neliojava@aws.com.br
+        format: string
+      senha:
+        type: string
+        example: 1234
+        format: string
+  body_response:
+    type: object
+    required:
+      - id
+      - token
+    properties:
+      id:
+        type: string
+        example: 5
+        format: string
+      token:
+        type: string
+        example:  >- 
+          eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImF5bGFuQGJvc2Nhcmluby5jb20iLCJwYXNzd29yZCI6InlhMGdzcWh5NHd6dnV2YjQifQ.yN_-Mge9mFgsnYHnPEh_ZzNP7YKvSbQ3Alug9HMCsM'

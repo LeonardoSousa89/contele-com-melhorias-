@@ -1,0 +1,14 @@
+CREATE DATABASE contele 
+DROP DATABASE contele;
+
+\c contele
+
+CREATE TABLE IF NOT EXISTS usuario(
+    id SERIAL PRIMARY KEY UNIQUE,
+    nome VARCHAR(100) NOT NULL UNIQUE,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    senha VARCHAR(100) NOT NULL 
+);
+DROP TABLE usuario;
+
+SELECT * FROM usuario;

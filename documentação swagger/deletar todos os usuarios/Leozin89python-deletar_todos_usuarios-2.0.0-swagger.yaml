@@ -1,0 +1,36 @@
+swagger: '2.0'
+info:
+  version: 2.0.0
+  title: Deletar todos usuarios
+  description: Deletar todos usuarios
+paths: 
+   /api/v1/users:
+    delete:
+      summary: deletar todos os usuarios
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: '#/definitions/body_request'
+      responses:
+        204:
+          description: Dados removidos com Sucesso.
+          schema:
+            $ref: '#/definitions/body_response'
+        401:
+          description: Você precisa estar logado para esta ação.
+        500:
+          description: Ocorreu um erro no servidor.
+definitions:
+  body_request:
+    type: object
+    required:
+      - token
+    properties:
+      token:
+        type: string
+        example: >- 
+          eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImF5bGFuQGJvc2Nhcmluby5jb20iLCJwYXNzd29yZCI6InlhMGdzcWh5NHd6dnV2YjQifQ.yN_-Mge9mFgsnYHnPEh_ZzNP7YKvSbQ3Alug9HMCsM'
+  body_response:
+    type: object

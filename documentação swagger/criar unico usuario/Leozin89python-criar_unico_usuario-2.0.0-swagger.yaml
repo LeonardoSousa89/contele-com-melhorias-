@@ -1,0 +1,51 @@
+swagger: '2.0'
+info:
+  version: 2.0.0
+  title: Criar único usuário
+  description: Criar único usuário
+paths: 
+  /api/v1/users:
+    post:
+      summary: Criar único usuário
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: '#/definitions/body_request'
+      responses:
+        201:
+          description: Usuário criado com sucesso.
+          schema:
+            $ref: '#/definitions/body_response'
+        400:
+          description: Erro ao inserir os dados.
+        500:
+          description: Ocorreu um erro no servidor.
+definitions:
+  body_request:
+    type: object
+    required:
+      - nome
+      - email
+      - senha
+    properties:
+      nome:
+        type: string
+        example: Thomas
+        format: string
+      email:
+        type: string
+        example: Thomas@gmail.com
+        format: email
+      senha:
+        type: string
+        example: 1234
+        format: password
+  body_response:
+    type: object
+    required:
+      - id
+      - nome
+      - email
+      - senha
