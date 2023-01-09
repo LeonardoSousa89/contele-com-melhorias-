@@ -1,12 +1,32 @@
-# a falta de coerencia neste arquivo pois em sua construção não possuia expertise da tecnologia docker
-
-version: "3"
-
+version: "3.0"  
 services:
   app:
+    container_name: "testecontele"
+    image: leozin89/contele
     build: .
-    command: npm start
+    environment:
+      - NODE_ENV=production
+    depends_on:
+      - postgresql
     ports:
-      - 8081:8081
+      - "8081:8081"
+    networks:
+      - default  
+    command: "npm start"
+  postgresql:
+    container_name: "postgresqlpostgres"
+    image: "postgres"
+    ports: 
+      - "5432:5432"
     volumes:
-      - .:/usr/contele 
+       - db_persdata:/var/lib/postgrespers
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: testecontele
+    networks:
+      - default
+networks:
+  default:
+volumes:
+  db_persdata : {}
